@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -5,6 +8,87 @@ plugins {
 }
 
 android {
+    val localProperties = Properties().apply {
+        load(FileInputStream(File(rootProject.rootDir, "local.properties")))
+    }
+
+    signingConfigs {
+        create("arabic") {
+            keyAlias = localProperties.getProperty("arabic.key.alias")
+            keyPassword = localProperties.getProperty("arabic.package")
+            storeFile = file(localProperties.getProperty("arabic.store.file"))
+            storePassword = localProperties.getProperty("arabic.package")
+        }
+        create("chinese") {
+            keyAlias = localProperties.getProperty("chinese.key.alias")
+            keyPassword = localProperties.getProperty("chinese.package")
+            storeFile = file(localProperties.getProperty("chinese.store.file"))
+            storePassword = localProperties.getProperty("chinese.package")
+        }
+        create("english") {
+            keyAlias = localProperties.getProperty("english.key.alias")
+            keyPassword = localProperties.getProperty("english.package")
+            storeFile = file(localProperties.getProperty("english.store.file"))
+            storePassword = localProperties.getProperty("english.package")
+        }
+        create("french") {
+            keyAlias = localProperties.getProperty("french.key.alias")
+            keyPassword = localProperties.getProperty("french.package")
+            storeFile = file(localProperties.getProperty("french.store.file"))
+            storePassword = localProperties.getProperty("french.package")
+        }
+        create("germany") {
+            keyAlias = localProperties.getProperty("germany.key.alias")
+            keyPassword = localProperties.getProperty("germany.package")
+            storeFile = file(localProperties.getProperty("germany.store.file"))
+            storePassword = localProperties.getProperty("germany.package")
+        }
+        create("italy") {
+            keyAlias = localProperties.getProperty("italy.key.alias")
+            keyPassword = localProperties.getProperty("italy.package")
+            storeFile = file(localProperties.getProperty("italy.store.file"))
+            storePassword = localProperties.getProperty("italy.package")
+        }
+        create("japan") {
+            keyAlias = localProperties.getProperty("japan.key.alias")
+            keyPassword = localProperties.getProperty("japan.package")
+            storeFile = file(localProperties.getProperty("japan.store.file"))
+            storePassword = localProperties.getProperty("japan.package")
+        }
+        create("korean") {
+            keyAlias = localProperties.getProperty("korean.key.alias")
+            keyPassword = localProperties.getProperty("korean.package")
+            storeFile = file(localProperties.getProperty("korean.store.file"))
+            storePassword = localProperties.getProperty("korean.package")
+        }
+        create("russian") {
+            keyAlias = localProperties.getProperty("russian.key.alias")
+            keyPassword = localProperties.getProperty("russian.package")
+            storeFile = file(localProperties.getProperty("russian.store.file"))
+            storePassword = localProperties.getProperty("russian.package")
+        }
+        create("spanish") {
+            keyAlias = localProperties.getProperty("spanish.key.alias")
+            keyPassword = localProperties.getProperty("spanish.package")
+            storeFile = file(localProperties.getProperty("spanish.store.file"))
+            storePassword = localProperties.getProperty("spanish.package")
+        }
+        create("turkish") {
+            keyAlias = localProperties.getProperty("turkish.key.alias")
+            keyPassword = localProperties.getProperty("turkish.package")
+            storeFile = file(localProperties.getProperty("turkish.store.file"))
+            storePassword = localProperties.getProperty("turkish.package")
+        }
+    }
+
+
+//            if (!keystoreFile.exists()) {
+//                throw GradleException("Release keystore not found!")
+//            }else{
+//                throw GradleException("Release keystore not founded xxxxxx")
+//            }
+
+
     namespace = "com.azmooneh.swallow"
     compileSdk = 35
 
@@ -21,6 +105,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("english")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
