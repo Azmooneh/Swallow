@@ -39,6 +39,7 @@ firebaseInappmessagingDisplay = "21.0.1"
 firebaseCrashlytics = "19.4.0"
 googleFirebaseCrashlytics = "3.0.2"
 firebaseAnalytics = "22.2.0"
+objectboxIo = "4.1.0"
 
 [libraries]
 android-networking = { module = "com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking", version.ref = "androidNetworking" }
@@ -89,4 +90,5 @@ firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
+objectbox = { id = "io.objectbox", version.ref = "objectboxIo" }
 
